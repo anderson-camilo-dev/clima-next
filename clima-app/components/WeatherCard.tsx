@@ -1,4 +1,5 @@
 
+
 interface WeatherCardProps {
   data: WeatherData | null;
   locationName: string; // Nova prop
