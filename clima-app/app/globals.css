@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.layout-header {
+  background-color: #ffffff; /* fundo branco ou qualquer cor */
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 10px 40px 15px rgba(0, 0, 0, 0.911);
+}

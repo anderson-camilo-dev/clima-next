@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "../components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +24,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{
+          margin: 0, // remove margem padrão para evitar scroll indesejado
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
-        {children}
+        {/* Header permanece sem fundo */}
+        <header className="layout-header">
+          <Header />
+        </header>
+
+        {/* Container do conteúdo, com fundo */}
+        <div
+          style={{
+            flex: 1, // para ocupar o espaço restante da tela
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1419833173245-f59e1b93f9ee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            padding: "1rem", // ajuste conforme seu layout
+          }}
+        >
+          {children}
+        </div>
       </body>
     </html>
   );

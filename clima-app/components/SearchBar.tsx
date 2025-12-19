@@ -3,6 +3,7 @@ interface SearchBarProps {
   setCity: (value: string) => void;
   onSearch: () => void;
   onLocation: () => void;
+  loading: boolean;
 }
 
 export default function SearchBar({
@@ -10,32 +11,42 @@ export default function SearchBar({
   setCity,
   onSearch,
   onLocation,
+  loading,
 }: SearchBarProps) {
   return (
     <div className="flex flex-col gap-4 mb-6 w-full max-w-md">
-      {/* Container para o input e botão de busca por nome */}
       <div className="flex gap-2">
         <input
           type="text"
-          className="border p-2 rounded text-black flex-1"
+          className="border p-2 rounded text-black flex-1 disabled:bg-gray-200"
           placeholder="Nome da cidade..."
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          disabled={loading}
         />
         <button
           onClick={onSearch}
-          className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded transition-colors"
+          disabled={loading}
+          className={`p-2 rounded text-white transition-colors ${
+            loading
+              ? "bg-blue-300 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600"
+          }`}
         >
-          Buscar
+          {loading ? "Buscando..." : "Buscar"}
         </button>
       </div>
 
-      {/* Botão para localização automática via GPS do navegador */}
       <button
         onClick={onLocation}
-        className="bg-green-600 hover:bg-green-700 text-white p-2 rounded transition-colors"
+        disabled={loading}
+        className={`p-2 rounded text-white transition-colors ${
+          loading
+            ? "bg-green-300 cursor-not-allowed"
+            : "bg-green-600 hover:bg-green-700"
+        }`}
       >
-        Usar minha localização
+        {loading ? "Aguarde..." : "Usar minha localização"}
       </button>
     </div>
   );
