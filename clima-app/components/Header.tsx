@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header 
       style={headerStyle} 
-      className="w-full border-b border-gray-200 py-16 px-8 flex justify-between items-center"
+      className="w-full  py-16 px-8 flex justify-betwee items-center"
     >
       {/* Logo ou Nome do Site */}
       

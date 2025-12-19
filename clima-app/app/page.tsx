@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import SearchBar from "../components/SearchBar";
 import WeatherCard from "../components/WeatherCard";
 
+
 const WeatherMap = dynamic(() => import("../components/Map"), { 
   ssr: false,
   loading: () => (
@@ -137,7 +138,7 @@ export default function WeatherPage() {
 
   return (
     // Aqui tirei o bg-gray-100 para que a imagem do layout fique visível
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen p-30 flex flex-col font-sans">
       
       <main className="flex flex-1 flex-col items-center p-6 gap-6 w-full max-w-4xl mx-auto">
         <SearchBar
@@ -170,6 +171,7 @@ export default function WeatherPage() {
               lon={coords.lon}
               apiKey={OPEN_WEATHER_KEY}
             />
+          
           </div>
         )}
       </main>
